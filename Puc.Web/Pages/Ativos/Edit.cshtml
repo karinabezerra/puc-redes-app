@@ -1,0 +1,69 @@
+﻿@page
+@model Puc.Web.Pages.Ativos.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Ativo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Ativo.Id" />
+            <div class="form-group">
+                <label asp-for="Ativo.Nome" class="control-label"></label>
+                <input asp-for="Ativo.Nome" class="form-control" />
+                <span asp-validation-for="Ativo.Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ativo.Responsavel" class="control-label"></label>
+                <input asp-for="Ativo.Responsavel" class="form-control" />
+                <span asp-validation-for="Ativo.Responsavel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ativo.Patrimonio" class="control-label"></label>
+                <input asp-for="Ativo.Patrimonio" class="form-control" />
+                <span asp-validation-for="Ativo.Patrimonio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ativo.Status" class="control-label"></label>
+                <select asp-for="Ativo.Status" class="form-control form-select" aria-label="Status">
+                    <option value="0" selected>Disponível</option>
+                    <option value="1">Em Operação</option>
+                    <option value="2">Fora de Operação</option>
+                    <option value="3">Defeito</option>
+                </select>
+                <span asp-validation-for="Ativo.Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ativo.Categoria" class="control-label"></label>
+                <select asp-for="Ativo.Categoria" class="form-control form-select" aria-label="Categoria">
+                    <option value="0" selected>Selecione uma categoria</option>
+                    <option value="1">Computadore</option>
+                    <option value="2">Impressora</option>
+                    <option value="3">Monitor</option>
+                    <option value="4">Periférico </option>
+                    <option value="5">Escritório</option>
+                    <option value="8">Rede</option>
+                </select>
+                <span asp-validation-for="Ativo.Categoria" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Voltar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
