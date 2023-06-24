@@ -1,0 +1,17 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      dotnet: 6.0
+  pre_build:
+    commands:
+      - dotnet restore Puc.Web/Puc.Web.csproj
+  build:
+    commands:
+      - dotnet build --no-restore -c Release Puc.Web/Puc.Web.csproj 
+  post_build:
+    commands:
+      - dotnet publish -c Release -o ./app/ Puc.Web/Puc.Web.csproj
+artifacts:
+  files:
+    - '**/*'
