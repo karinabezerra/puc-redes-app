@@ -5,18 +5,6 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <EnableSdkContainerSupport>true</EnableSdkContainerSupport>
-	  <ContainerImageName>karinabezerra</ContainerImageName>
-	  <PublishProfile>DefaultContainer</PublishProfile>
-		  <WebPublishMethod>Container</WebPublishMethod>
-		  <ContainerPublishMethod>NetSdk</ContainerPublishMethod>
-		  <PublishImageTag>latest</PublishImageTag>
-		  <LastUsedBuildConfiguration>Release</LastUsedBuildConfiguration>
-		  <LastUsedPlatform>Any CPU</LastUsedPlatform>
-		  <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
-		  <ProjectGuid>9f6b1024-c3c3-4b24-8e95-8c303caa28dc</ProjectGuid>
-		  <_IsDockerfilePresent>true</_IsDockerfilePresent>
-		  <_TargetId>NetSdkDockerContainerRegistry</_TargetId>
   </PropertyGroup>
 
   <ItemGroup>
