@@ -1,0 +1,1 @@
+web: dotnet ./app/Puc.Web.dll
