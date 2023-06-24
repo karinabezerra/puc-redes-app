@@ -12,16 +12,26 @@ namespace Puc.Web
             // Add services to the container.
             builder.Services.AddRazorPages();
 
+            var assemblyName = typeof(Program).Assembly.GetName().Name;
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
             builder.Services.AddDbContext<AppDbContext>(options =>
-            options.UseInMemoryDatabase("name"));
+            options.UseSqlServer(connectionString!, m => m.MigrationsAssembly(assemblyName)));
 
             var app = builder.Build();
 
+            //using var scope = app.Services.CreateScope();
+            //var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+            //if (context.Database.GetPendingMigrations().Any())
+            //{
+            //    context.Database.MigrateAsync();
+            //}
+
             // Configure the HTTP request pipeline.
-            if (!app.Environment.IsDevelopment())
-            {
-                app.UseExceptionHandler("/Error");
-            }
+            //if (!app.Environment.IsDevelopment())
+            //{
+            //    app.UseExceptionHandler("/Error");
+            //}
             app.UseStaticFiles();
 
             app.UseRouting();
