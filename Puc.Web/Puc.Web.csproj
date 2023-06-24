@@ -5,6 +5,10 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+	<ContainerImageName>puc-redes-app</ContainerImageName>
+	<ContainerImageTags>latest</ContainerImageTags>
+	<PublishProfile>DefaultContainer</PublishProfile>
+	<RuntimeIdentifier>linux-x64</RuntimeIdentifier>
   </PropertyGroup>
 
   <ItemGroup>
