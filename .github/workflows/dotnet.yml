@@ -34,7 +34,9 @@ jobs:
       run: |
          dotnet publish Puc.Web/Puc.Web.csproj --configuration "Release" -r linux-x64 --no-self-contained -o app
     - name: Generate deployment package 
-      run: cd app; zip ../app.zip *
+      run: rm app/web.config
+    - name: Generate deployment package 
+      run: cd app; zip ../app.zip *; cd ..; zip app.zip app.zip web.config
     - name: Beanstalk Deploy
       uses: einaregilsson/beanstalk-deploy@v21
       with:
