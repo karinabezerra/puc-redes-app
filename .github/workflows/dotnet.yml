@@ -4,10 +4,10 @@
 name: .NET
 
 env:
-  aws_access_key: ${{ secrets.aws_access_key }}
-  aws_secret_key: ${{ secrets.aws_secret_key }}
-  aws_session_token: ${{ secrets.aws_session_token }}
-  aws_region: ${{ secrets.aws_region }}
+  aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
+  aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
+  aws_session_token: ${{ secrets.AWS_SESSION_TOKEN }}
+  aws_region: ${{ secrets.AWS_REGION }}
   
 on:
   push:
