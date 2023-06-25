@@ -32,7 +32,7 @@ jobs:
       run: dotnet build --no-restore --configuration Release
     - name: dotnet publish
       run: |
-        dotnet publish -c Release --self-contained "true" -o app
+         dotnet publish -r win10-x64 --configuration "Release" --self-contained "true" -o app
     
     - name: Generate deployment package 
       run: cd app; zip ../app.zip *
