@@ -37,7 +37,7 @@ jobs:
         dotnet publish -c Release -o app
     - name: Get current date
       id: date
-      run: echo "::set-output name=date::$(date +'v%Y%m%d%H%M%S')" >> "$GITHUB_ENV"
+      run: echo "::set-output name=date::$(date +'v%Y%m%d%H%M%S')"
     - name: Beanstalk Deploy
       uses: einaregilsson/beanstalk-deploy@v21
       with:
