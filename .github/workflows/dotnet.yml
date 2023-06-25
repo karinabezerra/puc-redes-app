@@ -21,8 +21,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Get current date
-      run: echo ${{ secrets.AWS_SESSION_TOKEN }}
     - uses: actions/checkout@v3
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
@@ -35,9 +33,9 @@ jobs:
     - name: dotnet publish
       run: |
         dotnet publish -c Release -o app
-    - name: Get current date
-      id: date
-      run: echo "::set-output name=date::$(date +'v%Y%m%d%H%M%S')"
+    
+    - name: Generate deployment package 
+      run: cd app; zip ../app.zip *
     - name: Beanstalk Deploy
       uses: einaregilsson/beanstalk-deploy@v21
       with:
@@ -48,4 +46,5 @@ jobs:
         region: us-east-1
         application_name: pucweb
         environment_name: Pucweb-env
-        version_label: ${{ steps.date.outputs.date }}
+        version_label: ${{ github.run_id }}
+        deployment_package: app.zip
