@@ -28,16 +28,13 @@ jobs:
         dotnet-version: 6.0.x
     - name: Restore dependencies
       run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore --configuration Release
     - name: dotnet publish
-      run: |
-         dotnet publish Puc.Web/Puc.Web.csproj --configuration "Release" -r win10-x64 --self-contained -o app
+      run: dotnet publish Puc.Web/Puc.Web.csproj --configuration "Release" -r win10-x64 --no-self-contained -o app
     - name: Remove web.config
       run: cd app; rm web.config; cd ..
     - name: Generate deployment package 
       run: cd app; zip ../app.zip *; cd ..; zip app.zip app.zip web.config
-    - name: Beanstalk Deploy
+    - name: Aws Deploy
       uses: einaregilsson/beanstalk-deploy@v21
       with:
         # AWS Access Key
@@ -49,3 +46,4 @@ jobs:
         environment_name: Pucweb-env
         version_label: ${{ github.run_id }}
         deployment_package: app.zip
+        wait_for_deployment: "false"
