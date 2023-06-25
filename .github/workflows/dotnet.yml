@@ -33,8 +33,8 @@ jobs:
     - name: dotnet publish
       run: |
          dotnet publish Puc.Web/Puc.Web.csproj --configuration "Release" -r linux-x64 --no-self-contained -o app
-    - name: Generate deployment package 
-      run: rm ./app/web.config
+    - name: Remove web.config
+      run: cd app; rm web.config; cd ..
     - name: Generate deployment package 
       run: cd app; zip ../app.zip *; cd ..; zip app.zip app.zip web.config
     - name: Beanstalk Deploy
