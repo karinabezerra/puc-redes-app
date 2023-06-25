@@ -35,7 +35,7 @@ jobs:
         dotnet publish -c Release -o app
     - name: Get current date
       id: date
-      run: echo "::set-output name=date::$(date +'%Y%m%d%H%M%S')"
+      run: echo "{date}=$(date +'%Y%m%d%H%M%S')" >> "$GITHUB_ENV"
     - name: Beanstalk Deploy
       uses: einaregilsson/beanstalk-deploy@v21
       with:
@@ -46,10 +46,10 @@ jobs:
         # AWS Session Token when using temporary security credentials such as when assuming a role in AWS through STS
         aws_session_token: $aws_session_token
         # AWS Region
-        region: $aws_region
+        region: us-east-1
         # Beanstalk application name
         application_name: pucweb
         # Beanstalk environment name. If empty a version will be created but not deployed anywhere.
         environment_name: Pucweb-env
         # Version label for new Beanstalk version
-        version_label: v${{ steps.date.outputs.date }}
+        version_label: v${{ env.date }}
