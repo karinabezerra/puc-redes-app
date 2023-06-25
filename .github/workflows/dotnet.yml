@@ -32,7 +32,7 @@ jobs:
       run: dotnet build --no-restore --configuration Release
     - name: dotnet publish
       run: |
-         dotnet publish Puc.Web/Puc.Web.csproj --configuration "Release" -r win10-x64 -o app
+         dotnet publish Puc.Web/Puc.Web.csproj --configuration "Release" -r win10-x64 --no-self-contained -o app
     
     - name: Generate deployment package 
       run: cd app; zip ../app.zip *
